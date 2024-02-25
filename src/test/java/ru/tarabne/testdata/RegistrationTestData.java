@@ -1,11 +1,14 @@
 package ru.tarabne.testdata;
 
 import com.github.javafaker.Faker;
+import org.aeonbits.owner.ConfigFactory;
+import ru.tarabne.config.RegistrationConfig;
 
 public class RegistrationTestData {
+    RegistrationConfig registrationConfig = ConfigFactory.create(RegistrationConfig.class);
     static Faker faker = new Faker();
-    public String firstName = faker.name().firstName(),
-            lastName = faker.name().lastName(),
+    public String firstName = registrationConfig.firstName(),
+            lastName = registrationConfig.lastName(),
             userEmail = faker.internet().emailAddress(),
             userGender = faker.options().option(genders),
             phoneNumber = faker.phoneNumber().subscriberNumber(10),
