@@ -1,6 +1,5 @@
 package ru.tarabne.tests;
 
-import com.codeborne.selenide.Config;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -9,7 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import ru.tarabne.config.BrowserConfig;
+import ru.tarabne.config.DriverConfig;
 import ru.tarabne.helpers.Attach;
 
 import java.util.Map;
@@ -17,12 +16,12 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
-        BrowserConfig browserConfig = ConfigFactory.create(BrowserConfig.class);
+        DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class);
 
-        Configuration.browser = browserConfig.browser();
-        Configuration.browserSize = browserConfig.browserSize();
-        Configuration.browserVersion = browserConfig.browserVersion();
-        Configuration.remote = browserConfig.remoteUrl();
+        Configuration.browser = driverConfig.browserName();
+        Configuration.browserSize = driverConfig.browserSize();
+        Configuration.browserVersion = driverConfig.browserVersion();
+        Configuration.remote = driverConfig.remoteUrl();
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
