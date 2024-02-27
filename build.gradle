@@ -56,9 +56,3 @@ task simple_test(type: Test) {
         includeTags("simple")
     }
 }
-
-task proptest(type: Test) {
-    useJUnitPlatform {
-        includeTags("propprop")
-    }
-}
